@@ -12,3 +12,4 @@
 
 ejecuta el las sentencias sql del archivo src/database/query.sql, el cual creara la base de datos y cargara los datos del CSV
 importante tener guardado el archivo en la ruta especificada, puede ser otra pero antes se deve asegurar que se tenga permisos
+

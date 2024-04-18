@@ -8,6 +8,7 @@ export const restaurantRouter = () => {
   const controller = new RestaurantController();
 
   restaurantRouter.get("/", verifyToken, controller.getAll);
+  restaurantRouter.get("/:id", verifyToken, controller.getOne);
 
   return restaurantRouter;
 };
