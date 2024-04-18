@@ -9,6 +9,7 @@ export const restaurantRouter = () => {
 
   restaurantRouter.get("/", verifyToken, controller.getAll);
   restaurantRouter.get("/:id", verifyToken, controller.getOne);
+  restaurantRouter.post("/", verifyToken, controller.create);
 
   return restaurantRouter;
 };
