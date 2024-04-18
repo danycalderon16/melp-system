@@ -10,6 +10,8 @@ export const restaurantRouter = () => {
   restaurantRouter.get("/", verifyToken, controller.getAll);
   restaurantRouter.get("/:id", verifyToken, controller.getOne);
   restaurantRouter.post("/", verifyToken, controller.create);
+  restaurantRouter.delete("/:id", verifyToken, controller.delete);
+  restaurantRouter.put("/:id", verifyToken, controller.update);
 
   return restaurantRouter;
 };
