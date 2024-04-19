@@ -12,7 +12,7 @@ export class RestaurantController {
               COUNT(*) as count_restaurants,
               AVG(r.rating) as average_raitign,
               STD(r.rating) as standar_desviation
-          FROM Restaurants r
+          FROM restaurants r
           WHERE ST_Distance_Sphere(
               POINT(r.lng, r.lat), 
               POINT(?, ?)
@@ -113,7 +113,14 @@ export class RestaurantController {
           req.params.id,
         ]
       );
-      return res.status(200).json({ restaurant });
+      if (restaurant[0].affectedRows === 0) {
+        return res.status(404).json({ error: "Restaurant not found" });
+      }
+
+      return res.status(200).json({
+        message: "The restaurant was successfully updated",
+        updatedRestaurant: restaurant,
+      });
     } catch (error) {
       console.error("Error updating restaurant:", error);
       return res.status(500).json({ error: "Error updating restaurant" });
@@ -131,7 +138,10 @@ export class RestaurantController {
         return res.status(404).json({ error: "Restaurant not found" });
       }
 
-      return res.status(200).json({ restaurant });
+      return res.status(200).json({
+        message: "The restaurant was successfully deleted",
+        deletedRestaurant: restaurant,
+      });
     } catch (error) {
       console.error("Error deleting restaurant:", error);
       return res.status(500).json({ error: "Error deleting restaurant" });
