@@ -76,7 +76,11 @@ export class RestaurantController {
         [id, rating, name, site, email, phone, street, city, state, lat, lng]
       );
 
-      return res.status(201).json({ id, restaurant });
+      return res.status(201).json({
+        message: "The restaurant was successfully created",
+        id,
+        createdRestaurant: restaurant,
+      });
     } catch (error) {
       console.error("Error creating restaurant:", error);
       return res.status(500).json({ error: "Error creating restaurant" });

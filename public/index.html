@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Melp System</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        margin-bottom: 10px;
+      }
+      .endpoint {
+        margin-bottom: 20px;
+      }
+      h2{
+        font-size: 2rem;
+      }
+      .request,
+      .response {
+        margin-left: 20px;
+      }
+      .url {
+        border: 1px gray solid;
+        padding: 3px;
+        border-radius: 5px;
+      }
+      .code {
+        background-color: #f4f4f4;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .get{
+        color: rgb(34, 187, 34);
+      }
+      .post{
+        color: rgb(230, 141, 40);
+      }
+      .update{
+        color: rgb(42, 72, 243);
+      }
+      .delete{
+        color: rgb(241, 37, 37);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>API Documentation</h1>
+
+    <div class="endpoint">
+      <h2 class="post">Access Token</h2>
+      <div class="request">
+        <h3>Request</h3>
+        <p>Method: POST</p>
+        <p class="url">URL: <code>/auth/access_token</code></p>
+      </div>
+      <div class="response">
+        <h3>Response</h3>
+        <div class="code">
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZGFjdiIsImlhdCI6MTcxMzU1Mjk3OCwiZXhwIjoxNzEzNTk2MTc4fQ.f3i6jZbkCvHq21iTSBcvH3sTtoFwSJ0v5JO_imCJaW0
+        </div>
+      </div>
+    </div>
+    <div class="endpoint">
+      <h2 class="get">Get One</h2>
+      <div class="request">
+        <h3>Request</h3>
+        <p>Method: GET</p>
+        <p>Params: id</p>
+        <p class="url">
+          URL:<code>/api/restaurants/9c40c283-956c-4b5c-8879-7f43f91440b5</code>
+        </p>
+        <p>Authorization: Bearer Token</p>
+      </div>
+      <div class="response">
+        <h3>Response</h3>
+        <div class="code">
+          <pre>
+              {
+                "restaurant": [
+                {
+                  "id": "c099982a-ebed-46f9-ae5c-71010e5054be",
+                  "rating": 1,
+                  "name": "Dany's Pizza",
+                  "site": "https://dacv.com",
+                  "email": "daniel_calderon@email.com",
+                  "phone": "210-03-10",
+                  "street": "Av Mexico 200",
+                  "city": "Tepic",
+                  "state": "Nayarit",
+                  "lat": 21.511,
+                  "lng": -104.89
+                }
+                ]
+              }
+            </pre
+          >
+        </div>
+      </div>
+    </div>
+    <div class="endpoint">
+      <h2 class="get">Get All</h2>
+      <div class="request">
+        <h3>Request</h3>
+        <p>Method: GET</p>
+        <p class="url">URL:<code>/api/restaurants</code></p>
+        <p>Authorization: Bearer Token</p>
+      </div>
+      <div class="response">
+        <h3>Response</h3>
+        <div class="code">
+          <pre>
+            {
+              "restaurants": [
+                  [
+                      {
+                          "id": "030eaf75-da6e-4748-9727-f2704f831498",
+                          "rating": 2,
+                          "name": "Niño - Negrete",
+                          "site": "https://elizabeth.gob.mx",
+                          "email": "Luz_Sevilla@gmail.com",
+                          "phone": "5178-668-409",
+                          "street": "3041 Gael Torrente",
+                          "city": "Querétaro Saratown",
+                          "state": "Oaxaca",
+                          "lat": 19.4417,
+                          "lng": -99.1266
+                      },
+                    .
+                    .
+                    .
+                  ]
+                ]
+              }
+            </pre
+          >
+        </div>
+      </div>
+    </div>
+    <div class="endpoint">
+      <h2 class="get">Statistics</h2>
+      <div class="request">
+        <h3>Request</h3>
+        <p>Method: GET</p>
+        <p>Params: latitude=x&longitude=y&radius=z</p>
+        <p class="url">
+          URL:<code
+            >/api/restaurants/statistics?latitude=19.4423&longitude=-99.1293&radius=500</code
+          >
+        </p>
+        <p>Authorization: Bearer Token</p>
+      </div>
+      <div class="response">
+        <h3>Response</h3>
+        <div class="code">
+          <pre>
+            {
+              "count_restaurants": 39,
+              "average_raitign": "1.5897",
+              "standar_desviation": 1.4973129559647622
+          }
+            </pre
+          >
+        </div>
+      </div>
+    </div>
+    <div class="endpoint">
+      <h2 class="post">Create</h2>
+
+      <h3>Request</h3>
+      <p>Method: POST</p>
+      <p class="url">
+        URL:<code>/api/restaurants</code>
+      </p>
+      <p>Authorization: Bearer Token</p>
+      <p>Body:</p>
+      <div class="code">
+        <pre>
+        {
+          "rating": 2,
+          "name": "Dany's Pizza",
+          "site": "https://dacv.com",
+          "email": "daniel_calderon@email.com",
+          "phone": "210-03-10",
+          "street": "Av Mexico 400",
+          "city": "Tepic",
+          "state": "Nayarit",
+          "lat": 21.511,
+          "lng": -104.89
+        }</pre
+        >
+      </div>
+      <div class="response">
+        <h3>Response</h3>
+        <div class="code">
+          <pre>
+            {
+              "message": "The restaurant was successfully created",
+              "id": "08c972ba-8054-401c-a2d9-d0c699040aeb",
+              "createdRestaurant": [
+                  {
+                      "fieldCount": 0,
+                      "affectedRows": 1,
+                      "insertId": 0,
+                      "info": "",
+                      "serverStatus": 2,
+                      "warningStatus": 0,
+                      "changedRows": 0
+                  },
+                  null
+              ]
+          }
+            </pre
+          >
+        </div>
+      </div>
+    </div>
+    <div class="endpoint">
+      <h2 class="update">Update</h2>
+      <p>This endpoint allows you to update restaurant information.</p>
+
+      <h3>Request</h3>
+      <p>Method: PUT</p>
+      <p class="url">
+        URL:<code>/api/restaurants/9c40c283-956c-4b5c-8879-7f43f91440b5</code>
+      </p>
+      <p>Authorization: Bearer Token</p>
+      <p>Body:</p>
+      <div class="code">
+        <pre>
+        {
+          "rating": 2,
+          "name": "Dany's Pizza",
+          "site": "https://dacv.com",
+          "email": "daniel_calderon@email.com",
+          "phone": "210-03-10",
+          "street": "Av Mexico 400",
+          "city": "Tepic",
+          "state": "Nayarit",
+          "lat": 21.511,
+          "lng": -104.89
+        }</pre
+        >
+      </div>
+      <div class="response">
+        <h3>Response</h3>
+        <div class="code">
+          <pre>
+            {
+              "message": "The restaurant was successfully updated",
+              "updatedRestaurant": [
+                  {
+                      "fieldCount": 0,
+                      "affectedRows": 1,
+                      "insertId": 0,
+                      "info": "Rows matched: 1  Changed: 1  Warnings: 0",
+                      "serverStatus": 2,
+                      "warningStatus": 0,
+                      "changedRows": 1
+                  },
+                  null
+              ]
+          }
+            </pre
+          >
+        </div>
+      </div>
+    </div>
+    <div class="endpoint">
+      <h2 class="delete">Delete</h2>
+
+      <h3>Request</h3>
+      <p>Method: DELETE</p>
+      <p>Params: id</p>
+      <p class="url">
+        URL:<code>/api/restaurants/9c40c283-956c-4b5c-8879-7f43f91440b5</code>
+      </p>
+      <p>Authorization: Bearer Token</p>
+      <div class="response">
+        <h3>Response</h3>
+        <div class="code">
+          <pre>
+            {
+              "message": "The restaurant was successfully deleted",
+              "deletedRestaurant": [
+                  {
+                      "fieldCount": 0,
+                      "affectedRows": 1,
+                      "insertId": 0,
+                      "info": "",
+                      "serverStatus": 2,
+                      "warningStatus": 0,
+                      "changedRows": 0
+                  },
+                  null
+              ]
+          }
+            </pre
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

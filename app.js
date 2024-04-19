@@ -1,5 +1,7 @@
 import express, { json } from "express";
 import "dotenv/config";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import { authRouter } from "./routes/auth.js";
 import { restaurantRouter } from "./routes/restaurants.js";
@@ -9,12 +11,13 @@ const PORT = process.env.PORT || 3456;
 const app = express();
 
 app.use(json());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "../")));
 
 app.get("/", (req, res) => {
-  return res.send(
-    `<h1>Welcome to the Melp System API!</h1>
-    <p>To access other routes, use Postman or another API testing tool and provide your access token.</p>`
-  );
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.use("/auth", authRouter());
