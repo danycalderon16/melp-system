@@ -3,6 +3,30 @@ import { v4 as uuidv4 } from "uuid";
 import connection from "../model/db.js";
 
 export class RestaurantController {
+  findRestaurants = async (req, res) => {
+    try {
+      const { latitude, longitude, radius } = req.query;
+
+      const data = await connection.query(
+        `SELECT 
+              COUNT(*) as count_restaurants,
+              AVG(r.rating) as average_raitign,
+              STD(r.rating) as standar_desviation
+          FROM Restaurants r
+          WHERE ST_Distance_Sphere(
+              POINT(r.lng, r.lat), 
+              POINT(?, ?)
+          ) < ?;`,
+        [longitude, latitude, radius]
+      );
+
+      return res.status(200).json(data[0][0]);
+    } catch (error) {
+      console.error("Error al obtener restaurantes:", error);
+      return res.status(500).json({ error: "Error al obtener restaurantes" });
+    }
+  };
+
   getAll = async (req, res) => {
     try {
       const restaurants = await connection.query("SELECT * FROM restaurants");
