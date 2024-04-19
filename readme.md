@@ -1,15 +1,35 @@
 # Melp System
 
-### To run this app you need the next tools:
+## Local Environment Setup
 
-1. Node.js installed
-2. A MySQL instance running where to create the database.
+### Prerequisites
 
+Before running this application locally, ensure you have the following tools installed:
 
-### Steps
+1. **Node.js**: Download and install Node.js from [here](https://nodejs.org/).
+2. **MySQL**: Ensure you have a MySQL instance running to create the necessary database.
 
-#### 1. Create the database 
+## Setup Steps
 
-ejecuta el las sentencias sql del archivo src/database/query.sql, el cual creara la base de datos y cargara los datos del CSV
-importante tener guardado el archivo en la ruta especificada, puede ser otra pero antes se deve asegurar que se tenga permisos
+Follow these steps to set up and run the application locally:
 
+### 1. Create the Database
+
+Execute the SQL statements found in the file `database/query.sql`. These statements will create the required database schema and load data from a CSV file.
+
+**Note:** Ensure the SQL file is saved in the specified path. If you choose a different location, ensure you have the necessary permissions.
+
+### 2. Install Dependencies
+
+Navigate to the root folder of the project and execute the following command to install all project dependencies:
+
+```bash
+npm install
+```
+### 3. Run the Application
+
+Once all dependencies are installed, start the application by running the following command:
+
+```bash
+node app.js
+```
