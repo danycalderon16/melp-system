@@ -11,7 +11,10 @@ const app = express();
 app.use(json());
 
 app.get("/", (req, res) => {
-  return res.send("Hello World!");
+  return res.send(
+    `<h1>Welcome to the Melp System API!</h1>
+    <p>To access other routes, use Postman or another API testing tool and provide your access token.</p>`
+  );
 });
 
 app.use("/auth", authRouter());
