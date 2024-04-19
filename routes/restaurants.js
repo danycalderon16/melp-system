@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { RestaurantController } from "../controllers/restaurants.js";
-import verifyToken from "../middlewate/verifyToken.js";
+import verifyToken from "../middleware/verifyToken.js";
 
 export const restaurantRouter = () => {
   const restaurantRouter = Router();
