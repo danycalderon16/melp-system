@@ -6,7 +6,7 @@ export const authRouter = () => {
 
   const controller = new AuthController();
 
-  authRouter.post("/token", controller.createToken);
+  authRouter.post("/access_token", controller.createToken);
 
   return authRouter;
 };
