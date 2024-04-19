@@ -6,7 +6,7 @@ export class AuthController {
       {
         user: "dacv",
       },
-      process.env.ACCESS_TOKEN_SECRET,
+      process.env.ACCESS_TOKEN_SECRET || "dacv",
       { expiresIn: "1h" }
     );
 

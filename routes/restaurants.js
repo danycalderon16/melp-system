@@ -7,7 +7,7 @@ export const restaurantRouter = () => {
 
   const controller = new RestaurantController();
 
-  restaurantRouter.get("/statistics", verifyToken, controller.findRestaurants);
+  restaurantRouter.get("/statistics", verifyToken, controller.getStats);
   restaurantRouter.get("/", verifyToken, controller.getAll);
   restaurantRouter.get("/:id", verifyToken, controller.getOne);
   restaurantRouter.post("/", verifyToken, controller.create);

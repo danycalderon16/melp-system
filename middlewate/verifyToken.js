@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
   try {
     const decodedAccessToken = jwt.verify(
       accessToken,
-      process.env.ACCESS_TOKEN_SECRET
+      process.env.ACCESS_TOKEN_SECRET || "dacv"
     );
     req.claims = decodedAccessToken;
 

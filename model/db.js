@@ -1,14 +1,8 @@
 import mysql from "mysql2/promise";
-const config = {
-  host: process.env.HOST_SQL_DATABASE,
-  port: process.env.PORT_SQL_DATABASE,
-  user: process.env.USER_SQL_DATABASE,
-  password: process.env.PASSWORD_SQL_DATABASE,
-  database: process.env.NAME_SQL_DATABASE,
-};
+import { keys } from "../config/keys.js";
 
-const connection = await mysql.createConnection(config);
+const connection = await mysql.createConnection(keys);
 
-console.log("Conexión exitosa a la base de datos MySQL");
+console.log("Successful connection to MySQL database");
 
 export default connection;

@@ -4,7 +4,7 @@ import "dotenv/config";
 import { authRouter } from "./routes/auth.js";
 import { restaurantRouter } from "./routes/restaurants.js";
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3456;
 
 const app = express();
 

@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import connection from "../model/db.js";
 
 export class RestaurantController {
-  findRestaurants = async (req, res) => {
+  getStats = async (req, res) => {
     try {
       const { latitude, longitude, radius } = req.query;
 
@@ -22,8 +22,8 @@ export class RestaurantController {
 
       return res.status(200).json(data[0][0]);
     } catch (error) {
-      console.error("Error al obtener restaurantes:", error);
-      return res.status(500).json({ error: "Error al obtener restaurantes" });
+      console.error("Error getting statistics:", error);
+      return res.status(500).json({ error: "Error getting statistics" });
     }
   };
 
@@ -33,8 +33,8 @@ export class RestaurantController {
 
       return res.status(200).json({ restaurants });
     } catch (error) {
-      console.error("Error al obtener restaurantes:", error);
-      return res.status(500).json({ error: "Error al obtener restaurantes" });
+      console.error("Error getting all restaurants:", error);
+      return res.status(500).json({ error: "Error getting all restaurants" });
     }
   };
 
@@ -51,8 +51,8 @@ export class RestaurantController {
 
       return res.status(200).json({ restaurant: restaurant[0] });
     } catch (error) {
-      console.error("Error al obtener restaurant:", error);
-      return res.status(500).json({ error: "Error al obtener restaurant" });
+      console.error("Error getting one restaurant:", error);
+      return res.status(500).json({ error: "Error getting one restaurant" });
     }
   };
 
@@ -78,8 +78,8 @@ export class RestaurantController {
 
       return res.status(201).json({ id, restaurant });
     } catch (error) {
-      console.error("Error al crear restaurant:", error);
-      return res.status(500).json({ error: "Error al crear restaurant" });
+      console.error("Error creating restaurant:", error);
+      return res.status(500).json({ error: "Error creating restaurant" });
     }
   };
 
@@ -115,8 +115,8 @@ export class RestaurantController {
       );
       return res.status(200).json({ restaurant });
     } catch (error) {
-      console.error("Error al actualizar restaurant:", error);
-      return res.status(500).json({ error: "Error al actualizar restaurant" });
+      console.error("Error updating restaurant:", error);
+      return res.status(500).json({ error: "Error updating restaurant" });
     }
   };
 
@@ -133,8 +133,8 @@ export class RestaurantController {
 
       return res.status(200).json({ restaurant });
     } catch (error) {
-      console.error("Error al eliminar restaurant:", error);
-      return res.status(500).json({ error: "Error al eliminar restaurant" });
+      console.error("Error deleting restaurant:", error);
+      return res.status(500).json({ error: "Error deleting restaurant" });
     }
   };
 }
